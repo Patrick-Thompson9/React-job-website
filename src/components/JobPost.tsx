@@ -22,6 +22,8 @@ interface Props {
 
 export const createJobObject = (jobJSON: string): Job => {
   const job = JSON.parse(jobJSON);
+  console.log(job);
+  console.log(typeof job);
   return job as Job;
 };
 

@@ -3,12 +3,12 @@ import JobPost from "./JobPost";
 import Job, { createJobObject } from "./JobPost";
 
 function JobListings() {
-  console.log(jobs);
-  console.log("TEST" + typeof jobs[0]);
-  const currentJob = createJobObject(string(jobs[0]));
   return (
     <section className="bg-blue-50 px-4 py-10">
-      <JobPost job={currentJob} bg="bg-white" />
+      {jobs.map((job) => {
+        let jobJSON = createJobObject(JSON.stringify(job));
+        return <JobPost job={jobJSON} key={jobJSON.id} />;
+      })}
 
       <div className="container-xl lg:container m-auto">
         <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
