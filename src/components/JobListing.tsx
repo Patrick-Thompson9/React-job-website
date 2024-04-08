@@ -1,8 +1,12 @@
 import jobs from "../jobs.json";
 import JobPost from "./JobPost";
 
-function JobListing() {
-  const jobsPreview = jobs.slice(0, 3);
+interface Props {
+  numJobs?: number;
+}
+
+function JobListing({ numJobs = 3 }: Props) {
+  const jobsPreview = jobs.slice(0, numJobs);
 
   return (
     <section className="bg-blue-50 px-4 py-10">
