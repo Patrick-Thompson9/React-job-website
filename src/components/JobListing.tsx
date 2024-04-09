@@ -11,16 +11,13 @@ function JobListing({ isHome = false }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchJobs = () => {
-      fetch("/api/jobs")
-        .then((res) => res.json())
-        .then((data) => {
-          setJobs(data);
-        })
-        .catch((err) => console.error(err))
-        .finally(() => setLoading(false));
-    };
-    fetchJobs();
+    fetch("/api/jobs")
+      .then((res) => res.json())
+      .then((data) => {
+        setJobs(data);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
   }, []);
 
   const numJobs = 3;
