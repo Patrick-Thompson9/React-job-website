@@ -1,5 +1,5 @@
 import logo from "../assets/images/logo.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   interface LinkProps {
