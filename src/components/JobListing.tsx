@@ -12,7 +12,7 @@ function JobListing({ isHome = false }: Props) {
 
   useEffect(() => {
     const fetchJobs = () => {
-      fetch("http://localhost:5000/jobs")
+      fetch("/api/jobs")
         .then((res) => res.json())
         .then((data) => {
           setJobs(data);
