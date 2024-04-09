@@ -1,11 +1,27 @@
-import jobs from "../jobs.json";
-import JobPost from "./JobPost";
+import { useState, useEffect } from "react";
+import JobPost, { Job } from "./JobPost";
 
 interface Props {
   isHome?: boolean;
 }
 
 function JobListing({ isHome = false }: Props) {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchJobs = () => {
+      fetch("http://localhost:5000/jobs")
+        .then((res) => res.json())
+        .then((data) => {
+          setJobs(data);
+        })
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
+    };
+    fetchJobs();
+  }, []);
+
   const numJobs = 3;
   const jobsPreview = isHome ? jobs.slice(0, numJobs) : jobs;
 

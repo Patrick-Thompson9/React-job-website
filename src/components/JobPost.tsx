@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaMapMarker } from "react-icons/fa";
 
-type Job = {
+export type Job = {
   id: string;
   title: string;
   type: string;
