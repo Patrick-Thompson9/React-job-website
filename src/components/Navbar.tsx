@@ -8,7 +8,10 @@ function Navbar() {
         <div className="flex h-20 items-center justify-between">
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
             {/* <!-- Logo --> */}
-            <Link className="flex flex-shrink-0 items-center mr-4" to="/">
+            <Link
+              className="flex flex-shrink-0 items-center mr-4 hover:bg-blue-600 rounded-md px-3 py-2"
+              to="/"
+            >
               <img className="h-10 w-auto" src={logo} alt="React Jobs" />
               <span className="hidden md:block text-white text-2xl font-bold ml-2">
                 React Jobs
@@ -24,13 +27,13 @@ function Navbar() {
                 </Link>
                 <Link
                   to="/jobs"
-                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className="text-white hover:bg-gray-500 hover:text-white rounded-md px-3 py-2"
                 >
                   Jobs
                 </Link>
                 <Link
                   to="/Linkdd-job"
-                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className="text-white hover:bg-gray-500 hover:text-white rounded-md px-3 py-2"
                 >
                   Add Job
                 </Link>
