@@ -1,7 +1,7 @@
 import { Job } from "../components/JobPost";
 import { useLoaderData, LoaderFunctionArgs, Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 
 type LoaderData = {
   job: Job;
@@ -35,7 +35,7 @@ function JobPage() {
                 <div className="text-gray-500 mb-4">{job.type}</div>
                 <h1 className="text-3xl font-bold mb-4">{job.title}</h1>
                 <div className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
-                  <i className="fa-solid fa-location-dot text-lg text-orange-700 mr-2"></i>
+                  <FaMapMarker className="mr-1 text-orange-700" />
                   <p className="text-orange-700">{job.location}</p>
                 </div>
               </div>
