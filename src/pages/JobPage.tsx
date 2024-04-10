@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
 import JobPost, { Job } from "../components/JobPost";
-import { useParams, useLoaderData, LoaderFunctionArgs } from "react-router-dom";
+import { useLoaderData, LoaderFunctionArgs } from "react-router-dom";
 import Spinner from "../components/Spinner";
 
 type LoaderData = {
@@ -8,12 +7,10 @@ type LoaderData = {
 };
 
 function JobPage() {
-  const [currentJob, setCurrentJob] = useState<Job | null>(null);
-  const { id } = useParams();
   const { job } = useLoaderData() as LoaderData;
 
   if (!job) {
-    return <Spinner loading={!currentJob} />;
+    return <Spinner loading={!job} />;
   }
 
   return <JobPost job={job} />;
