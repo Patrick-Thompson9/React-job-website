@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
 import JobPost, { Job } from "../components/JobPost";
-import { useParams } from "react-router-dom";
+import { useParams, useLoaderData, LoaderFunctionArgs } from "react-router-dom";
 import Spinner from "../components/Spinner";
+
+type LoaderData = {
+  job: Job;
+};
 
 function JobPage() {
   const [currentJob, setCurrentJob] = useState<Job | null>(null);
   const { id } = useParams();
+  const { job } = useLoaderData() as LoaderData;
 
-  useEffect(() => {
-    fetch(`/api/jobs/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentJob(data))
-      .catch((err) => console.error(err));
-  }, []);
-
-  if (!currentJob) {
+  if (!job) {
     return <Spinner loading={!currentJob} />;
   }
 
-  return <JobPost job={currentJob} />;
+  return <JobPost job={job} />;
 }
 
-export default JobPage;
+const jobLoader = async ({ params }: LoaderFunctionArgs) => {
+  const res = await fetch(`/api/jobs/${params.id}`);
+  const job = await res.json();
+  return { job };
+};
+
+export { JobPage as default, jobLoader };
