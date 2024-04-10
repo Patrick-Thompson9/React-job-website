@@ -35,7 +35,7 @@ function Navbar() {
                 <NavLink to="/jobs" className={linkClass}>
                   Jobs
                 </NavLink>
-                <NavLink to="/Linked-job" className={linkClass}>
+                <NavLink to="/add-job" className={linkClass}>
                   Add Job
                 </NavLink>
               </div>
