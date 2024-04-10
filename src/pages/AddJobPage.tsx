@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function AddJobPage() {
+interface props {
+  addJobSubmit: (newJob: any) => void;
+}
+
+function AddJobPage({ addJobSubmit }: props) {
   const defaultType = "Full-Time";
   const defaultSalary = "Under $50K";
 
@@ -13,6 +18,8 @@ function AddJobPage() {
   const [companyDescription, setCompanyDescription] = useState("");
   const [companyContactEmail, setcompanyContactEmail] = useState("");
   const [companyContactPhone, setCompanyContactPhone] = useState("");
+
+  const navigate = useNavigate();
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +37,8 @@ function AddJobPage() {
         contactPhone: companyContactPhone,
       },
     };
-    console.log(newJob);
+    addJobSubmit(newJob);
+    return navigate("/jobs");
   };
 
   return (
