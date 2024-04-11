@@ -24,13 +24,24 @@ function App() {
     return;
   };
 
+  const deleteJobs = (id: string) => {
+    fetch(`/api/jobs/${id}`, {
+      method: "DELETE",
+    }).catch((err) => console.error(err));
+    return;
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/add-job" element={<AddJobPage addJobSubmit={addJob} />} />
         <Route path="/jobs" element={<JobsPage />} />
-        <Route path="/jobs/:id" element={<JobPage />} loader={jobLoader} />
+        <Route
+          path="/jobs/:id"
+          element={<JobPage deleteJob={deleteJobs} />}
+          loader={jobLoader}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     )

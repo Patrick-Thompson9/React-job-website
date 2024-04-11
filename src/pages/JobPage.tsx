@@ -1,5 +1,10 @@
 import { Job } from "../components/JobPost";
-import { useLoaderData, LoaderFunctionArgs, Link } from "react-router-dom";
+import {
+  useLoaderData,
+  LoaderFunctionArgs,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 
@@ -7,8 +12,13 @@ type LoaderData = {
   job: Job;
 };
 
-function JobPage() {
+interface props {
+  deleteJob: (jobDelete: any) => void;
+}
+
+function JobPage({ deleteJob }: props) {
   const { job } = useLoaderData() as LoaderData;
+  const navigate = useNavigate();
 
   if (!job) {
     return <Spinner loading={!job} />;
@@ -89,7 +99,13 @@ function JobPage() {
                 >
                   Edit Job
                 </Link>
-                <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block">
+                <button
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                  onClick={() => {
+                    deleteJob(job.id);
+                    navigate("/jobs");
+                  }}
+                >
                   Delete Job
                 </button>
               </div>
