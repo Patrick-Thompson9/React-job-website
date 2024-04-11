@@ -1,6 +1,21 @@
 import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const onFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log("email: " + email);
+    console.log("password: " + password);
+    return navigate("/jobs");
+  };
+
   return (
     <section className=" bg-indigo-50 min-h-screen">
       <div className="container m-auto max-w-2xl py-1">
@@ -22,6 +37,8 @@ function LoginPage() {
                 placeholder="Example@example.com"
                 type="text"
                 className="border rounded w-full mb-2 py-2 px-3"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="m-2">
@@ -36,10 +53,16 @@ function LoginPage() {
                 placeholder="password"
                 type="text"
                 className="border rounded w-full mb-2 py-2 px-3"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="m-2">
-              <button className="bg-indigo-700 hover:bg-indigo-500 text-white py-2 px-4 rounded-full w-full mb-4">
+              <button
+                className="bg-indigo-700 hover:bg-indigo-500 text-white py-2 px-4 rounded-full w-full mb-4"
+                type="submit"
+                onClick={onFormSubmit}
+              >
                 Login
               </button>
             </div>
