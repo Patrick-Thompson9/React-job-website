@@ -13,6 +13,7 @@ import { jobLoader } from "./pages/JobPage";
 import AddJobPage from "./pages/AddJobPage";
 import EditJobPage from "./pages/EditJobPage";
 import { Job } from "./components/JobPost";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const addJob = (newJob: any) => {
@@ -47,6 +48,7 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/add-job" element={<AddJobPage addJobSubmit={addJob} />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route

@@ -1,5 +1,6 @@
 import logo from "../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   interface LinkProps {
@@ -27,7 +28,7 @@ function Navbar() {
                 React Jobs
               </span>
             </NavLink>
-            <div className="md:ml-auto">
+            <div className="md:my-auto ml-auto">
               <div className="flex space-x-2">
                 <NavLink to="/" className={linkClass}>
                   Home
@@ -37,6 +38,9 @@ function Navbar() {
                 </NavLink>
                 <NavLink to="/add-job" className={linkClass}>
                   Add Job
+                </NavLink>
+                <NavLink to="/login">
+                  <FaUserCircle className="text-white text-3xl rounded-full my-auto hover:bg-white hover:text-indigo-700" />
                 </NavLink>
               </div>
             </div>
