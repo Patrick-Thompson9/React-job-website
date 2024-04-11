@@ -17,6 +17,14 @@ interface props {
 }
 
 function JobPage({ deleteJob }: props) {
+  const onDeleteJobClick = (id: string) => {
+    const confirm = window.confirm("Are you sure you want to delete this job?");
+
+    if (!confirm) return;
+    deleteJob(id);
+    navigate("/jobs");
+  };
+
   const { job } = useLoaderData() as LoaderData;
   const navigate = useNavigate();
 
@@ -102,8 +110,7 @@ function JobPage({ deleteJob }: props) {
                 <button
                   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                   onClick={() => {
-                    deleteJob(job.id);
-                    navigate("/jobs");
+                    onDeleteJobClick(job.id);
                   }}
                 >
                   Delete Job
