@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 type LoaderData = {
   job: Job;
@@ -22,6 +23,7 @@ function JobPage({ deleteJob }: props) {
 
     if (!confirm) return;
     deleteJob(id);
+    toast.success("Job deleted successfully!");
     navigate("/jobs");
   };
 
