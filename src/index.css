@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#account-dropdown {
+  visibility: hidden;
+}
+
+#account-logo:hover ul#account-dropdown {
+  visibility: visible;
+}

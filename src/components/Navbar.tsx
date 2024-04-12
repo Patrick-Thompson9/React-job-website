@@ -1,6 +1,8 @@
 import logo from "../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import AccountDropdown from "./AccountDropdown";
+import "../index.css";
 
 function Navbar() {
   interface LinkProps {
@@ -28,7 +30,7 @@ function Navbar() {
                 React Jobs
               </span>
             </NavLink>
-            <div className="md:my-auto ml-auto">
+            <div className="md:my-auto ml-auto mr-24">
               <div className="flex space-x-2">
                 <NavLink to="/" className={linkClass}>
                   Home
@@ -39,9 +41,13 @@ function Navbar() {
                 <NavLink to="/add-job" className={linkClass}>
                   Add Job
                 </NavLink>
-                <NavLink to="/login">
-                  <FaUserCircle className="text-white text-3xl rounded-full my-auto hover:bg-white hover:text-indigo-700" />
-                </NavLink>
+                <div id="account-logo" className="absolute right-2">
+                  <FaUserCircle
+                    className="text-white text-3xl rounded-full size-20 p-4
+                     relative bottom-5 hover:bg-white hover:text-indigo-700 hover:rounded-none"
+                  />
+                  <AccountDropdown />
+                </div>
               </div>
             </div>
           </div>
